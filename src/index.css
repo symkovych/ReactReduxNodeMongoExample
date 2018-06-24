@@ -1,0 +1,37 @@
+ul {
+    list-style-type: none;
+}
+nav {
+    position: fixed;
+    margin:auto;
+    z-index: 1;
+}
+nav ul{
+    margin:0px;
+    padding:0px;
+}
+menu {
+    display: block;
+}
+nav li {
+    list-style : none;
+    float: left;
+    padding: 5px;
+    border: solid 1px;
+    border-radius: 4px;
+    background-color: #eee;
+    font-size: 20px;
+    cursor:pointer;
+}
+nav li:hover {
+    background-color: #fff;
+}
+nav li a:link, a:visited {
+    text-decoration: none;
+    color: black;
+    padding: 14px 16px;
+}
+.switch {
+    margin-top: 40px;
+    position: absolute;
+}
