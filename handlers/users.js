@@ -69,7 +69,6 @@ var UsersHandler = function () {
     var err = new Error();
 
     err.status = 500;
-    // err.message = 'Password is required';
 
     if (!pass) {
       err.message = {
@@ -110,12 +109,26 @@ var UsersHandler = function () {
     var email = body.email;
     var pass = body.pass;
     var cryptedPass = sha256(pass);
+    var err = new Error ();
+      err.status = 500;
 
+      if (!pass || !email) {
+          err.message = {
+              signIn: 'Password and email is required'
+          };
+          return next(err)
+      }
     cryptedPass = cryptedPass.toString();
 
-    UsersModel.findOne({ email: email, pass: cryptedPass }, function (err, users) {
-      if (err) {
-        return next(err);
+    UsersModel.findOne({ email: email, pass: cryptedPass }, function (error, users) {
+      if (error) {
+        return next(error);
+      }
+      if (!users){
+          err.message = {
+              notFound: 'This email is not registered'
+          };
+          return next(err)
       }
 
       if (users && users._id) {

@@ -273,8 +273,12 @@ export const signIn = ({ email, pass }, history) => {
         })
       })
       .catch((err) => {
-        console.log(err);
-      })
+            const errorOb = err.message;
+            dispatch({
+                type: SIGNUP_ERROR,
+                payload: errorOb
+            })
+        })
   }
 };
 

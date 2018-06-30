@@ -1,16 +1,16 @@
 import { GET_COMMENTS, EDIT_COMMENT, DELETE_COMMENT } from '../constants/actionTypes'
-
-const defaultStore = {
-    comments: []
-};
-
-export default (state = defaultStore, action) => {
-    const {
-        type,
-        payload
-    } = action;
-
-    switch (type) {
+//
+// const defaultStore = {
+//     comments: []
+// };
+//
+// export default (state = defaultStore, action) => {
+//     const {
+//         type,
+//         payload
+//     } = action;
+//
+//     switch (type) {
         // case GET_COMMENTS:
         //     return {
         //         ...state,
@@ -46,8 +46,8 @@ export default (state = defaultStore, action) => {
         //             return el._id != payload._id
         //         })
         //     };
-
-        default:
-            return state;
-    }
-}
+//
+//         default:
+//             return state;
+//     }
+// }

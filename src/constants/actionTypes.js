@@ -1,6 +1,7 @@
 //app
 export const CHANGE_LOGIN = 'CHANGE_LOGIN';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
+export const SIGNIN_ERROR = 'SIGNIN_ERROR';
 
 //users
 export const ADD_USER = 'ADD_USER';

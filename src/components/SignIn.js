@@ -27,6 +27,7 @@ class SignIn extends Component {
 
   render() {
     const { email, pass } = this.state;
+    const { errors } = this.props;
 
     return (<div>
         <h1>Sign In</h1>
@@ -36,6 +37,7 @@ class SignIn extends Component {
             this.onInputChange(value, 'email')
           }}
           value={email}
+          error={errors.notFound}
         />
             <br/>
         <Input
@@ -51,13 +53,18 @@ class SignIn extends Component {
           title="Submit"
           onClick={this.signIn}
         />
+        {errors.signIn && <span style={{ color: 'red' }}>{errors.signIn}</span>}
             <br/>
         <NavLink to="/signUp">Don't have account?</NavLink>
       </div>
     );
   }
 }
-
+function mapStoreToProps(store) {
+    return {
+        errors: store.app.errors
+    }
+}
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     signIn
@@ -66,4 +73,4 @@ function mapDispatchToProps(dispatch) {
 
 
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(mapStoreToProps, mapDispatchToProps)(SignIn);
