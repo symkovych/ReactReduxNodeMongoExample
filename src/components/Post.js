@@ -18,7 +18,7 @@ class Post extends Component{
         return (
             <div>
                 <h3>{this.props.post.title}</h3>
-                <p>Posted by {this.props.post.userName} <em> ({this.props.post.date.substring(0,10)})</em></p>
+                <p>Posted by {this.props.post.postAuthor} <em> ({this.props.post.date})</em></p>
                 {description}
                 {this.state.isShow && <Comment  _id = {this.props.post._id} comments = {this.props.post.comments}/>}
                 <Button className = "btn btn-primary" title = {this.state.isShow ? 'Hide':'Open'} onClick = {this.showDescription} />

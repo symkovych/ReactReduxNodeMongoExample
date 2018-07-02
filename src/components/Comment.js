@@ -73,6 +73,7 @@ class Comment extends Component {
                 />
             </div> :
             <span id = {el._id}>{el.text}</span>;
+            if (!el._id) return; //becouse created empty obj in getPost aggregate
             return (
                 <li key={el._id}>
                     {el.name}->  {edit}

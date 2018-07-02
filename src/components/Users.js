@@ -43,7 +43,7 @@ class Users extends Component {
         createUser({name,email,pass,isAdmin});
     }
     render() {
-        const {users} = this.props;
+        const {users, errors} = this.props;
         const {name,email, pass} = this.state;
         return (
             <div>
@@ -53,8 +53,9 @@ class Users extends Component {
                        }}/>
                 <br/>
                 <Input title = "Email" value={email}
-                       onInputChange={(value) => { this.onInputChange(value, 'email')
-                       }}/>
+                       onInputChange={(value) => { this.onInputChange(value, 'email')}}
+                       error = { errors.email }
+                />
                 <br/>
                 <Input title = "Password" value={pass}
                        onInputChange={(value) => { this.onInputChange(value, 'pass')
@@ -65,6 +66,7 @@ class Users extends Component {
                 <br/>
                 <Button title = "Create user" className = "btn btn-primary"
                         onClick = {this.createUser}/>
+                {errors.passAndEmail && <span style = {{color:'red'}}>{errors.passAndEmail}</span>}
                 <hr/>
                 <h4>Delete users:</h4>
                 <ul>
@@ -77,7 +79,8 @@ class Users extends Component {
 
 function mapStoreToProps(store) {
     return {
-        users: store.users.items
+        users: store.users.items,
+        errors: store.app.errors
     }
 }
 

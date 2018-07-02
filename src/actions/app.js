@@ -4,7 +4,8 @@ import {
   DELETE_USERS,
   SIGNUP_ERROR,
   UPDATE_USER,
-  ADD_USER
+  ADD_USER,
+  CREATE_USER_ERR
 } from '../constants/actionTypes'
 
 
@@ -230,7 +231,11 @@ export const createUser = ({ email, pass, name, isAdmin }) => {
         })
       })
       .catch((err) => {
-            console.log(err);
+            const errorOb = err.message;
+            dispatch({
+                type: CREATE_USER_ERR,
+                payload: errorOb
+            })
         })
   }
 };

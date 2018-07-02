@@ -24,13 +24,36 @@ var UsersHandler = function () {
 
   this.createUser = function (req, res, next) {
     var body = req.body;
+    var email = req.body.email;
+    var err = new Error ();
+
+    if (!body.pass || !body.email){
+        err.message = {
+            passAndEmail: 'Password and email are required!'
+        };
+        return next(err)
+    }
+
     body.pass = sha256(body.pass);
     var userModel = new UsersModel(body);
-    userModel.save(function (err, result) {
-      if (err) {
-        return next(err);
-      }
-      res.status(201).send({data:result});
+    UsersModel.find({ email: email }).count(function (error, count) {
+          if (error) {
+              return next(error);
+          }
+
+          if (count) {
+              err.message = {
+                  email: 'This email is already used'
+              };
+              return next(err)
+          }
+
+          userModel.save(function (err, result) {
+            if (err) {
+              return next(err);
+            }
+            res.status(201).send({data:result});
+          })
     })
   };
 

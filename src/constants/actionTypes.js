@@ -2,6 +2,7 @@
 export const CHANGE_LOGIN = 'CHANGE_LOGIN';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const SIGNIN_ERROR = 'SIGNIN_ERROR';
+export const CREATE_USER_ERR = 'CREATE_USER_ERR';
 
 //users
 export const ADD_USER = 'ADD_USER';
