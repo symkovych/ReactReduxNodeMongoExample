@@ -1,5 +1,6 @@
 var CommentsModel = require('../models/comment');
 
+
 var CommentsHandler = function () {
 
     this.updateComment = function (req, res, next) {

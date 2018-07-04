@@ -117,7 +117,8 @@ class Comment extends Component {
 
 function mapStoreToProps(store) {
     return {
-        currentUser: store.users.currentUser
+        currentUser: store.users.currentUser,
+        posts: store.posts.items
     }
 }
 
