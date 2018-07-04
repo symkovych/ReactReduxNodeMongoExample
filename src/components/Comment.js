@@ -77,7 +77,7 @@ class Comment extends Component {
             return (
                 <li key={el._id}>
                     {el.name}->  {edit}
-                    {el.userId == _id && Buttons }
+                    {el.userId === _id && Buttons }
                 </li>
             )
     };

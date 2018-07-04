@@ -1,5 +1,4 @@
 var PostsModel = require('../models/post');
-var ObjectId = require('mongoose').Schema.Types.ObjectId;
 
 var PostsHandler = function () {
     this.getAllPosts = function (req, res, next) {
@@ -31,12 +30,13 @@ var PostsHandler = function () {
                     }
 
             },{
-                $lookup: { //to make the comments author's name dynamic
+                $lookup:
+                    { //to make the comments author's name dynamic
                     from: "users",
                     localField: "comments.userId",
                     foreignField: "_id",
                     as: "commentAuthor"
-                }
+                    }
             },{
                 $group:
                     {

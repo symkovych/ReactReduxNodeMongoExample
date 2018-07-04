@@ -70,13 +70,12 @@ export default (state = defaultStore, action) => {
       case DELETE_COMMENT:
           const postArr3 = [...state.items];
           const postIndex = postArr3.findIndex(x => x._id === payload.postId );
-          const commentIndex = postArr3[postIndex].comments.findIndex(x => x._id = payload._id);
-          postArr3[postIndex].comments.splice(commentIndex-1, 1);
+          const updateComments = postArr3[postIndex].comments.filter(x => {return x._id !== payload._id});
+          postArr3[postIndex].comments = updateComments;
           return {
               ...state,
-              items: [...postArr3]
+              items: postArr3
           };
-
     default:
       return state;
   }
