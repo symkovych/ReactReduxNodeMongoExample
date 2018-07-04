@@ -43,7 +43,7 @@ export const addComment = (data) => {
 export const deleteComment = (data) => {
     return (dispatch) => {
         fetch('/comments/delete', {
-            method:'DELETE',
+            method: 'DELETE',
             credentials: 'same-origin',
             headers: {
                 Accept: 'application/json',
@@ -77,7 +77,7 @@ export const deleteComment = (data) => {
 export const editComment = (data) => {
     return (dispatch) => {
         fetch('/comments/update', {
-            method:'PATCH',
+            method: 'PATCH',
             credentials: 'same-origin',
             headers: {
                 Accept: 'application/json',

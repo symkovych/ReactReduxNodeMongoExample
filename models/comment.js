@@ -7,7 +7,7 @@ var CommentsSchema = new Schema({
     text: String,
     postId: {type: ObjectId, ref: 'Post', default: null},
     userId: {type: ObjectId, ref: 'User', default: null},
-}, { collection: 'comments' });
+}, {collection: 'comments'});
 
 var CommentModel = mongoose.model('Comment', CommentsSchema);
 

@@ -1,28 +1,27 @@
 var CommentsModel = require('../models/comment');
-var ObjectId = require('mongoose').Types.ObjectId;
 
 var CommentsHandler = function () {
 
-    this.updateComment = function (req,res,next){
+    this.updateComment = function (req, res, next) {
         var body = req.body;
         var id = body._id;
 
-        CommentsModel.findByIdAndUpdate(id, body, { new: true }, function (err, result) {
+        CommentsModel.findByIdAndUpdate(id, body, {new: true}, function (err, result) {
             if (err) {
                 return next(err);
             }
 
-            res.status(201).send({ data: result });
+            res.status(201).send({data: result});
         })
     };
-    this.deleteComment = function (req,res,next) {
+    this.deleteComment = function (req, res, next) {
         var body = req.body;
         var id = body._id;
-        CommentsModel.findByIdAndRemove({ _id: id}, function (err, result) {
+        CommentsModel.findByIdAndRemove({_id: id}, function (err, result) {
             if (err) {
                 return next(err);
             }
-            if(result){
+            if (result) {
                 res.status(200).send({data: result});
             }
         })
@@ -38,7 +37,7 @@ var CommentsHandler = function () {
             if (err) {
                 return next(err);
             }
-            res.status(201).send({ data: result });
+            res.status(201).send({data: result});
         })
     };
 };
