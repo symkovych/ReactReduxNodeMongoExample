@@ -47,7 +47,7 @@ connection.once('connected', function () {
 
   app.use(express.static('src'));
 
-  app.use(expressSession({ // почитайте і запишіть собі на що ці параетри впливають
+  app.use(expressSession({
     name: 'test', //If you have multiple apps running on the same hostname, then you need to separate the session cookies, for example set different names per app.
     key: 'testKey',
     secret: '1q2w3e4r5tdhgkdfhgejflkejgkdlgh8j0jge4547hh', //that to be safe use cookie
